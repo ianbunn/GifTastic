@@ -1,36 +1,53 @@
+// Topics array
 var topics = ["happy","angry","mischievous","ecstatic","funny","victorious","hungry","hangry","worried","stressed","scared","satisfied"]
+var topicSelected;
 
-// Creates url based on parameters added
-var url = "https://api.giphy.com/v1/gifs/search";
-url += '?' + $.param({
-    'q': "happy",
-    'api_key': "aq2QKEzeOkwyPBsKY1OmdpET62y3UqqC"
-});
+// Create buttons based on topics array
+for(v in topics){
+    var topicButtons = $("<button>");
+    topicButtons.text(topics[v]);
+    $("#topicButtons").append(topicButtons);
+}
 
-// Makes the GET call to url and triggers function to save json payload
-$.ajax({
-    url: url,
-    method: "GET"
-}).then(function(response){
-    
-    var results = response.data;
+// When button is clicked run this code block
+$("button").on("click",function(){
+    // Get the button text as topicSelected
+    x = $(this).text();
+    topicSelected = x;
 
-    for(var i = 0; i < results.length; i++){
+    // Creates url based on parameters added
+    var url = "https://api.giphy.com/v1/gifs/search";
+    url += '?' + $.param({
+        'q': topicSelected,
+        'api_key': "aq2QKEzeOkwyPBsKY1OmdpET62y3UqqC"
+    });
 
-        var emotionImageUrl = results[i].images.downsized_still.url;
+    // Makes the GET call to url and triggers function to save json payload
+    $.ajax({
+        url: url,
+        method: "GET"
+    }).then(function (response) {
 
-        var emotionsDiv = $("<div>");
+        var results = response.data;
 
-        var emotionImage = $("<img>").attr("src",emotionImageUrl);
-        emotionsDiv.append(emotionImage);
+        for (var i = 0; i < results.length; i++) {
 
-        var p = $("<p>").append("Title: " + results[i].title)
-        $(p).append("<br>Rating: " + results[i].rating)
-        $(p).append("<br>Username: " + results[i].username)
-        $(p).append("<br>Created time: " + results[i].import_datetime + "</p>")
+            var emotionImageUrl = results[i].images.downsized_still.url;
 
-        emotionsDiv.append(p);
+            var emotionsDiv = $("<div>");
 
-        $(".container").append(emotionsDiv);
-    }
+            var emotionImage = $("<img>").attr("src", emotionImageUrl);
+            emotionsDiv.append(emotionImage);
+
+            var p = $("<p>").append("Title: " + results[i].title)
+            $(p).append("<br>Rating: " + results[i].rating)
+            $(p).append("<br>Username: " + results[i].username)
+            $(p).append("<br>Created time: " + results[i].import_datetime + "</p>")
+
+            emotionsDiv.append(p);
+
+            $(".container").append(emotionsDiv);
+        }
+    })
 })
+
