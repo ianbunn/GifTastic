@@ -1,6 +1,17 @@
 body {
-    font-family: cursive;
-    background-color: pink;
+    font-family: 'Chelsea Market', cursive;
+    background: #e43a15;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #e65245, #e43a15);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #e65245, #e43a15); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+
+}
+
+.title {
+    /* font-family: 'Chelsea Market', cursive; */
+    font-family: 'Modak', cursive;
+    letter-spacing: 5px;
 }
 
 .card {

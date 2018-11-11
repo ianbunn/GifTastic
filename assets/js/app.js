@@ -84,12 +84,12 @@ function createButtons() {
                 // Create username item and append to list
                 var emotionInfoUsername = $("<li>")
                 emotionInfoUsername.addClass("list-group-item")
-                emotionInfoUsername.append("Username: " + results[i].rating);
+                emotionInfoUsername.append("Username: " + results[i].username);
                 emotionInfoList.append(emotionInfoUsername);
                 // Create created time item and append to list
                 var emotionInfoCreatedTime = $("<li>")
                 emotionInfoCreatedTime.addClass("list-group-item")
-                emotionInfoCreatedTime.append("Created Time: " + results[i].rating);
+                emotionInfoCreatedTime.append("Created Time: " + results[i].import_datetime);
                 emotionInfoList.append(emotionInfoCreatedTime);
                 emotionCard.append(emotionInfoList);
 
