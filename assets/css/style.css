@@ -6,3 +6,7 @@ body {
 .card {
     margin-bottom: 50px;
 }
+
+.topicButton {
+    margin: 3px;
+}
